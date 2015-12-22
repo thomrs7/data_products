@@ -9,11 +9,9 @@ shinyServer(function(input, output) {
     wx_data = read.csv('data/oct_2015_weather.csv')
     wx_data <- mutate(wx_data, 
                       time = as.POSIXct(time,origin = "1970-01-01",tz = "GMT"),
-                      Temperature = as.numeric(Temperature),
                       areaDescription = as.character(areaDescription)
         )
-    wx_data <- filter(wx_data, Temperature != 0)
-    
+
     ## Dynamic Dropdowns
     output$choose_vars <- renderUI({
         vars <- c("Temperature" = "Temperature",
