@@ -1,6 +1,7 @@
 library(shiny)
 library(plyr)
 library(dplyr)
+library(lubridate)
 library(ggplot2)
 library(viridis)
 
@@ -8,7 +9,7 @@ shinyServer(function(input, output) {
     ## Get and prepare data
     wx_data = read.csv('data/oct_2015_weather.csv')
     wx_data <- mutate(wx_data, 
-                      time = as.POSIXct(time,origin = "1970-01-01",tz = "GMT"),
+                      time = ymd_hms(time),
                       areaDescription = as.character(areaDescription)
         )
 
