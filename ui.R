@@ -15,10 +15,9 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
-
-      uiOutput("choose_vars"),
-      uiOutput("choose_location")
-
+        uiOutput("choose_location"),
+        uiOutput("choose_vars"),
+        helpText("Help test here")
     ),
 
     # Show a plot of the generated distribution

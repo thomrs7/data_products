@@ -51,7 +51,7 @@ shinyServer(function(input, output) {
     
     p <- ggplot(data,  aes_string(x='time',y=var)) 
     p <- p + geom_jitter(alpha=.5, size=3, aes_string(color=var)) 
-    p <- p + scale_color_gradientn(colours = viridis(6),  name=var) 
+    p <- p + scale_color_gradientn(colours = viridis(24),  name=var) 
     p <- p + labs(title = loc, x="Date", y="Degrees Fahrenheit") 
     p
     
