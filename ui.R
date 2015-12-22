@@ -1,10 +1,3 @@
-
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
 
 shinyUI(fluidPage(
@@ -12,17 +5,22 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("October 2015 Weather"),
 
-  # Sidebar with a slider input for number of bins
+  # Sidebar with data  inputs
   sidebarLayout(
     sidebarPanel(
         uiOutput("choose_location"),
         uiOutput("choose_vars"),
-        helpText("Help test here")
+        sliderInput("count",
+                    "Observations to Average:",
+                    min = 1,
+                    max = 10,
+                    value = 5),
+        helpText("Help text here")
     ),
 
-    # Show a plot of the generated distribution
+    # Show the plot
     mainPanel(
-      plotOutput("distPlot")
+      plotOutput("wxPlot")
     )
   )
 ))
