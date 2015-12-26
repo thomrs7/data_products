@@ -10,11 +10,11 @@ shinyUI(fluidPage(
     sidebarPanel(
         uiOutput("choose_location"),
         uiOutput("choose_vars"),
-        sliderInput("count",
-                    "Observations to Average:",
+        sliderInput("days",
+                    "Days to Average:",
                     min = 1,
-                    max = 10,
-                    value = 5),
+                    max = 14,
+                    value = 7),
         helpText("Help text here")
     ),
 

@@ -52,7 +52,9 @@ shinyServer(function(input, output) {
         p <- p + geom_point(alpha=.5, size=3, aes_string(color=var)) 
         p <- p + scale_color_gradientn(colours = viridis(24),  name=var) 
         p <- p + labs(title = loc, x="Date", y="Degrees Fahrenheit") 
-        p <- p + geom_line( aes(x=time, y=rollingAvg))
+        p <- p + geom_line( aes(x=time, y=rollingAvg), size=2, color='#666666',
+                            alpha=.5)
+        p <- p + geom_line( aes(x=time, y=rollingAvg), size=.5, color='black')
         
         
         return(p)
