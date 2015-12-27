@@ -46,16 +46,21 @@ shinyServer(function(input, output) {
         data <- filter(wx_data, areaDescription == loc)
         
         time_series <- ts(data[var])
-        data$rollingAvg <- ma(time_series, order=days*24)
+        data$rollingAvg <- ma(time_series, order=days*24, centre=FALSE)
+        # data$rollingAvg <- as.numeric(data$rollingAvg)
         
         p <- ggplot(data,  aes_string(x='time',y=var)) 
-        p <- p + geom_point(alpha=.5, size=3, aes_string(color=var)) 
+        p <- p + geom_point(alpha=.5, size=3, aes_string(color=var)) +
+            geom_line(alpha=.1, color='blue')
         p <- p + scale_color_gradientn(colours = viridis(24),  name=var) 
         p <- p + labs(title = loc, x="Date", y="Degrees Fahrenheit") 
-        p <- p + geom_line( aes(x=time, y=rollingAvg), size=2, color='#666666',
+        p <- p + geom_line( aes(x=time, y=rollingAvg), size=4, color='#666666',
                             alpha=.5)
-        p <- p + geom_line( aes(x=time, y=rollingAvg), size=.5, color='black')
+        p <- p + geom_line( aes(x=time, y=rollingAvg, linetype='Rolling Average'),
+                            size=.5)
+        p <- p + scale_linetype_discrete(name = "")
         
+
         
         return(p)
         
