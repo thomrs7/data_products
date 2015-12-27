@@ -15,7 +15,15 @@ shinyUI(fluidPage(
                     min = 1,
                     max = 14,
                     value = 7),
-        helpText("Help text here")
+        helpText(tags$h4("Directions"),
+                 "1) Select your location",
+                 tags$br(),
+                 "2) Choose variable to view",
+                 tags$br(),
+                 "3) Adjust slider for a rolling average",
+                 tags$br(),
+                 "4) Graph will update as data changes"
+                 )
     ),
 
     # Show the plot
